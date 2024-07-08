@@ -1,6 +1,3 @@
-/**
- * @module
- */
 import trackingParams from "./trackingParams.ts";
 
 /**
