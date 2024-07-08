@@ -1,5 +1,4 @@
 /**
- * Contains a function to remove specified tracking parameters from a given URL.
  * @module
  */
 import trackingParams from "./trackingParams.ts";
