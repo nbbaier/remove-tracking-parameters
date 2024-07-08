@@ -1,4 +1,4 @@
-import trackingParams from "./trackingParams.ts";
+import trackingParams from "../src/trackingParams.ts";
 
 /**
  * Removes specified tracking parameters from the given URL.
