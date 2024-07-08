@@ -1,3 +1,7 @@
+/**
+ * This module contains a functio to remove specified tracking parameters from a given URL.
+ * @module
+ */
 import trackingParams from "../src/trackingParams.ts";
 
 /**
@@ -6,7 +10,10 @@ import trackingParams from "../src/trackingParams.ts";
  * @param customParams - An optional array of custom tracking parameters to remove.
  * @returns The modified URL object with the tracking parameters removed.
  */
-function removeTrackingParams(url: URL, customParams: string[] = []): URL {
+export function removeTrackingParams(
+  url: URL,
+  customParams: string[] = []
+): URL {
   const paramsToRemove = new Set([...customParams, ...trackingParams]);
   const paramsToRemoveRegex = new RegExp(Array.from(paramsToRemove).join("|"));
   const params = new URLSearchParams(url.search.replace(/amp;/g, "&"));
@@ -19,5 +26,3 @@ function removeTrackingParams(url: URL, customParams: string[] = []): URL {
 
   return url;
 }
-
-export default removeTrackingParams;
