@@ -1,8 +1,8 @@
 /**
- * This module contains a functio to remove specified tracking parameters from a given URL.
+ * Contains a function to remove specified tracking parameters from a given URL.
  * @module
  */
-import trackingParams from "../src/trackingParams.ts";
+import trackingParams from "./trackingParams.ts";
 
 /**
  * Removes specified tracking parameters from the given URL.
