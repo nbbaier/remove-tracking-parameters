@@ -1,0 +1,5 @@
+{
+  "name": "@nbbaier/remove-tracking-parameters",
+  "version": "0.0.1",
+  "exports": "./mod.ts"
+}
