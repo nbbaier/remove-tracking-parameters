@@ -1,5 +1,5 @@
 import trackingParams from "./trackingParams.ts";
-import { decode } from "npm:entities@5.0.0";
+import { Html5Entities } from "./deps.ts";
 
 /**
  * Removes specified tracking parameters from the given URL.
@@ -11,7 +11,7 @@ export function removeTrackingParams(
   urlToClean: string,
   customParams: string[] = []
 ): URL {
-  const url = new URL(decode(urlToClean));
+  const url = new URL(Html5Entities.decode(urlToClean));
   const paramsToRemove = new Set([...customParams, ...trackingParams]);
   const params = url.searchParams;
 
