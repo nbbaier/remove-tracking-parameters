@@ -1,11 +1,14 @@
 {
   "name": "@nbbaier/remove-tracking-parameters",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "exports": "./src/mod.ts",
   "publish": {
     "include": [
       "src/**/*",
       "README.md"
     ]
+  },
+  "imports": {
+    "@std/html": "jsr:@std/html@^0.224.2"
   }
 }
