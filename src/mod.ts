@@ -1,4 +1,5 @@
 import trackingParams from "./trackingParams.ts";
+import { decode } from "npm:entities";
 
 /**
  * Removes specified tracking parameters from the given URL.
@@ -7,16 +8,18 @@ import trackingParams from "./trackingParams.ts";
  * @returns The modified URL object with the tracking parameters removed.
  */
 export function removeTrackingParams(
-  url: URL,
+  urlToClean: string,
   customParams: string[] = []
 ): URL {
+  const url = new URL(decode(urlToClean));
   const paramsToRemove = new Set([...customParams, ...trackingParams]);
-  const paramsToRemoveRegex = new RegExp(Array.from(paramsToRemove).join("|"));
-  const params = new URLSearchParams(url.search.replace(/amp;/g, "&"));
+  const params = url.searchParams;
 
-  params.forEach((_, key) => {
-    if (paramsToRemoveRegex.test(key)) {
-      url.searchParams.delete(key);
+  Array.from(params.keys()).forEach((key) => {
+    for (const trackingParam of paramsToRemove) {
+      if (new RegExp(trackingParam).test(key)) {
+        url.searchParams.delete(key);
+      }
     }
   });
 
