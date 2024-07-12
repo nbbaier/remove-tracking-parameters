@@ -1,5 +1,5 @@
 import trackingParams from "./trackingParams.ts";
-import { decode } from "npm:entities";
+import { decode } from "npm:entities@5.0.0";
 
 /**
  * Removes specified tracking parameters from the given URL.
