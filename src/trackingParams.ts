@@ -1,5 +1,6 @@
 export default [
   "ScCid",
+  "ck_subscriber_id",
   "_branch_match_id",
   "_bta_c",
   "_bta_tid",
