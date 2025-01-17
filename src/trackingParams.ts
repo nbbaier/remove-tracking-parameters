@@ -1,6 +1,5 @@
 export default [
-  "ScCid",
-  "ck_subscriber_id",
+  "_bhiiv"
   "_branch_match_id",
   "_bta_c",
   "_bta_tid",
@@ -8,7 +7,9 @@ export default [
   "_gl",
   "_ke",
   "_kx",
+  "campaign",
   "campid",
+  "ck_subscriber_id",
   "customid",
   "dclid",
   "dm_i",
@@ -40,6 +41,7 @@ export default [
   "redirect_mongo_id",
   "rtid",
   "s_kwcid",
+  "s",
   "sb_referer_host",
   "si",
   "sms_*",
@@ -49,7 +51,8 @@ export default [
   "ttclid",
   "twclid",
   "utm_*",
+  "via",
   "wbraid",
   "yclid",
-  "s",
+  "ScCid",
 ];
