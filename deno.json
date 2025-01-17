@@ -2,6 +2,7 @@
   "name": "@nbbaier/remove-tracking-parameters",
   "version": "0.0.7",
   "exports": "./src/mod.ts",
+  "license": "MIT",
   "publish": {
     "include": [
       "src/**/*",
