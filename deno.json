@@ -1,15 +1,14 @@
 {
-  "name": "@nbbaier/remove-tracking-parameters",
-  "version": "0.0.7",
-  "exports": "./src/mod.ts",
-  "license": "MIT",
-  "publish": {
-    "include": [
-      "src/**/*",
-      "README.md"
-    ]
-  },
-  "imports": {
-    "@std/html": "jsr:@std/html@^0.224.2"
-  }
+	"name": "@nbbaier/remove-tracking-parameters",
+	"license": "MIT",
+	"version": "0.1.0",
+	"exports": "./src/mod.ts",
+	"publish": {
+		"include": ["src/**/*", "README.md"]
+	},
+	"imports": {
+		"@std/assert": "jsr:@std/assert@^1.0.11",
+		"@std/html": "jsr:@std/html@^0.224.2",
+		"@std/testing": "jsr:@std/testing@^1.0.9"
+	}
 }
