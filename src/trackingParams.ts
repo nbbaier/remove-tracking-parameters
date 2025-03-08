@@ -1,5 +1,6 @@
 const PARAMS: (string | RegExp)[] = [
 	"__twitter_impression",
+	"_bhiiv",
 	"_branch_match_id",
 	"_bta_c",
 	"_bta_tid",
