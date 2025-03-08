@@ -1,5 +1,6 @@
+import { unescape as decodeHtmlEntities } from "@std/html";
 import trackingParams from "./trackingParams.ts";
-import { unescape } from "@std/html";
+
 /**
  * Removes specified tracking parameters from the given URL.
  * @param url - The URL object to remove tracking parameters from.
@@ -7,20 +8,25 @@ import { unescape } from "@std/html";
  * @returns The modified URL object with the tracking parameters removed.
  */
 export function removeTrackingParams(
-  urlToClean: string,
-  customParams: string[] = []
+	urlToClean: string,
+	customParams: (string | RegExp)[] = [],
 ): URL {
-  const url = new URL(unescape(urlToClean));
-  const paramsToRemove = new Set([...customParams, ...trackingParams]);
-  const params = url.searchParams;
+	const url = new URL(decodeHtmlEntities(urlToClean));
+	const paramsToRemove = new Set([...customParams, ...trackingParams]);
+	const params = Array.from(url.searchParams.keys());
 
-  Array.from(params.keys()).forEach((key) => {
-    for (const trackingParam of paramsToRemove) {
-      if (new RegExp(trackingParam).test(key)) {
-        url.searchParams.delete(key);
-      }
-    }
-  });
+	for (const key of params) {
+		for (const trackingParam of paramsToRemove) {
+			const regex =
+				typeof trackingParam === "string"
+					? new RegExp(`^${trackingParam}$`)
+					: trackingParam;
 
-  return url;
+			if (regex.test(key)) {
+				url.searchParams.delete(key);
+			}
+		}
+	}
+
+	return url;
 }
