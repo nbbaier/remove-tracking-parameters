@@ -1,4 +1,4 @@
-const PARAMS: (string | RegExp)[] = [
+export const TRACKING_PARAM_STRINGS = new Set<string>([
 	"__twitter_impression",
 	"_bhiiv",
 	"_branch_match_id",
@@ -107,7 +107,10 @@ const PARAMS: (string | RegExp)[] = [
 	"WT.mc_ev",
 	"WT.mc_id",
 	"WT.srch",
-	"yclid",
+	"yclid"
+]);
+
+export const TRACKING_PARAM_REGEX: RegExp[] = [
 	/fb_\w+/,
 	/ga_\w+/,
 	/hsa_\w+/,
@@ -121,7 +124,5 @@ const PARAMS: (string | RegExp)[] = [
 	/sms_\w+/,
 	/trk_\w+/,
 	/tw_\w+/,
-	/utm_\w+/,
+	/utm_\w+/
 ];
-
-export default PARAMS;

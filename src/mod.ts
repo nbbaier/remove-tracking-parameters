@@ -1,30 +1,50 @@
 import { unescape as decodeHtmlEntities } from "@std/html";
-import trackingParams from "./trackingParams.ts";
+import {
+	TRACKING_PARAM_REGEX,
+	TRACKING_PARAM_STRINGS,
+} from "./trackingParams.ts";
 
 /**
  * Removes specified tracking parameters from the given URL.
- * @param url - The URL object to remove tracking parameters from.
+ * @param urlToClean - The URL string or object to remove tracking parameters from.
  * @param customParams - An optional array of custom tracking parameters to remove.
  * @returns The modified URL object with the tracking parameters removed.
  */
 export function removeTrackingParams(
-	urlToClean: string,
+	urlToClean: string | URL,
 	customParams: (string | RegExp)[] = [],
 ): URL {
-	const url = new URL(decodeHtmlEntities(urlToClean));
-	const paramsToRemove = new Set([...customParams, ...trackingParams]);
+	let url: URL;
+	if (typeof urlToClean === "string") {
+		url = new URL(decodeHtmlEntities(urlToClean));
+	} else {
+		url = new URL(urlToClean);
+	}
+
+	const customStrings = new Set<string>();
+	const customRegex: RegExp[] = [];
+
+	for (const p of customParams) {
+		if (typeof p === "string") {
+			customStrings.add(p);
+		} else {
+			customRegex.push(p);
+		}
+	}
+
 	const params = Array.from(url.searchParams.keys());
 
 	for (const key of params) {
-		for (const trackingParam of paramsToRemove) {
-			const regex =
-				typeof trackingParam === "string"
-					? new RegExp(`^${trackingParam}$`)
-					: trackingParam;
+		if (TRACKING_PARAM_STRINGS.has(key) || customStrings.has(key)) {
+			url.searchParams.delete(key);
+			continue;
+		}
 
-			if (regex.test(key)) {
-				url.searchParams.delete(key);
-			}
+		if (
+			TRACKING_PARAM_REGEX.some((r) => r.test(key)) ||
+			customRegex.some((r) => r.test(key))
+		) {
+			url.searchParams.delete(key);
 		}
 	}
 
