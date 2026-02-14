@@ -43,7 +43,10 @@ describe("removeTrackingParams", () => {
 
 	it("works with URL object input", () => {
 		const url = new URL("https://example.com/?utm_source=test&content=main");
+		const originalHref = url.href;
 		const result = removeTrackingParams(url);
 		assertEquals(result.href, "https://example.com/?content=main");
+		// Verify that the original URL object is not mutated
+		assertEquals(url.href, originalHref);
 	});
 });
