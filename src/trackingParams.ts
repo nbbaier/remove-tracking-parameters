@@ -111,18 +111,18 @@ export const TRACKING_PARAM_STRINGS = new Set<string>([
 ]);
 
 export const TRACKING_PARAM_REGEX: RegExp[] = [
-	/fb_\w+/,
-	/ga_\w+/,
-	/hsa_\w+/,
-	/matomo_\w+/,
-	/mtm_\w+/,
-	/pd_rd\w+/,
-	/pf_rd\w+/,
-	/piwik_\w+/,
-	/pk_\w+/,
-	/ref_\w+/,
-	/sms_\w+/,
-	/trk_\w+/,
-	/tw_\w+/,
-	/utm_\w+/
+	/^fb_\w+/,
+	/^ga_\w+/,
+	/^hsa_\w+/,
+	/^matomo_\w+/,
+	/^mtm_\w+/,
+	/^pd_rd\w+/,
+	/^pf_rd\w+/,
+	/^piwik_\w+/,
+	/^pk_\w+/,
+	/^ref_\w+/,
+	/^sms_\w+/,
+	/^trk_\w+/,
+	/^tw_\w+/,
+	/^utm_\w+/
 ];
